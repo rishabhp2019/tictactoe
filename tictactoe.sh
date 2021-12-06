@@ -51,36 +51,39 @@ draw_board() {
 
 player_turns() {
   win="0"
-  i="0"
+  t="0"
 
-  while [ $win = 0 ] && [ $i -lt 9 ]
+  while [ $win = 0 ] && [ t++ ]
   do
-    echo -e "$player1 please choose which square you would like to place an x. (1-9) -->\c"
+    clear
+    draw_board
+    echo -e "$player1 please choose which square you would like to place a X. (1-9) -->\c"
     read inputx 
     i=$inputx
     unset -v 'array["$inputx"]'
-    array=("${array[@]:0:$i}" 'x' "${array[@]:$i}")
+    array=("${array[@]:0:$i}" 'X' "${array[@]:$i}")
     clear
     draw_board
-    echo -e "$player2 please choose which square you would like to place an o. (1-9) -->\c"
+    echo "$t"
+    echo -e "$player2 please choose which square you would like to place an O. (1-9) -->\c"
     read inputo
     i=$inputo
     unset -v 'array["$inputo"]'
-    array=("${array[@]:0:$i}" 'o' "${array[@]:$i}")
+    array=("${array[@]:0:$i}" 'O' "${array[@]:$i}")
     clear
     draw_board
-    win_condition
+    echo "$t"
+
+    if [ t=10 ]; then
+      echo "The Game is a Tie. Nobody wins!"
+    fi
+    exit
+
   done
 }
 
-win_condition() {
-  if [("${array[@]:1:2:3}") = 'x']
-    echo "$player1 has won the game!"
-fi
-}
 
 
 reset
 draw_board
-player_turns
-win_condition  
+player_turns 
