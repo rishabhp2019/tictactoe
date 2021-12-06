@@ -52,15 +52,15 @@ draw_board() {
 
 player_turns() {
   win="0"
-  turn="0"
+  turn="10"
 
-  while [ $win = 0 ] && [ $turn != 10 ]
+  while [ $win = 0 ] && [ $turn != 0 ]
   do
     clear
     draw_board
     echo -e "$player1 please choose which square you would like to place a X. (1-9) -->\c"
     read inputx 
-    turn=$((turn+1))
+    turn=$((turn-1))
     echo "$turn"
     i=$inputx
     unset -v 'array["$inputx"]'
@@ -69,7 +69,7 @@ player_turns() {
     draw_board
     echo -e "$player2 please choose which square you would like to place an O. (1-9) -->\c"
     read inputo
-    turn=$((turn+1))
+    turn=$((turn-1))
     echo "$turn"
     i=$inputo
     unset -v 'array["$inputo"]'
@@ -77,15 +77,12 @@ player_turns() {
     clear
     draw_board
 
-    if [ $turn = 10 ]; then
-      $win = 1
+    if [ $turn == 1 ]; then
+      win=1
       echo -e "The game is a tie! Nobody Wins!"
     fi
   done
 }
-
-
-
 
 win_condition() {
   #Horizontal Lines
