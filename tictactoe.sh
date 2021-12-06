@@ -1,5 +1,6 @@
 #!/bin/bash
 
+turn="0"
 
 player() {
 echo -e "What is player ones name? (First 3 letters) --->\c"
@@ -51,39 +52,58 @@ draw_board() {
 
 player_turns() {
   win="0"
-  t="0"
+  turn="0"
 
-  while [ $win = 0 ] && [ t++ ]
+  while [ $win = 0 ] && [ $turn != 10 ]
   do
     clear
     draw_board
     echo -e "$player1 please choose which square you would like to place a X. (1-9) -->\c"
     read inputx 
+    turn=$((turn+1))
+    echo "$turn"
     i=$inputx
     unset -v 'array["$inputx"]'
     array=("${array[@]:0:$i}" 'X' "${array[@]:$i}")
     clear
     draw_board
-    echo "$t"
     echo -e "$player2 please choose which square you would like to place an O. (1-9) -->\c"
     read inputo
+    turn=$((turn+1))
+    echo "$turn"
     i=$inputo
     unset -v 'array["$inputo"]'
     array=("${array[@]:0:$i}" 'O' "${array[@]:$i}")
     clear
     draw_board
-    echo "$t"
 
-    if [ t=10 ]; then
-      echo "The Game is a Tie. Nobody wins!"
+    if [ $turn = 10 ]; then
+      $win = 1
+      echo -e "The game is a tie! Nobody Wins!"
     fi
-    exit
-
   done
+}
+
+
+
+
+win_condition() {
+  #Horizontal Lines
+  w1="${array[1]} ${array[2]} ${array[3]}"
+  w2="${array[4]} ${array[5]} ${array[6]}"
+  w3="${array[7]} ${array[8]} ${array[9]}"
+  #Vertical Lines
+  w4="${array[1]} ${array[4]} ${array[7]}"
+  w5="${array[2]} ${array[5]} ${array[8]}"
+  w6="${array[3]} ${array[6]} ${array[9]}"
+  #Diagonal Lines
+  w7="${array[1]} ${array[5]} ${array[9]}"
+  w8="${array[3]} ${array[5]} ${array[7]}"
 }
 
 
 
 reset
 draw_board
+win_condition
 player_turns 
