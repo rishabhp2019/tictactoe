@@ -1,5 +1,6 @@
 #!/bin/bash
 
+clear
 
 scoreboard(){
   echo "SCORES"
@@ -109,17 +110,10 @@ win_condition() {
   if [[ ${array[0]} != - && ${array[0]} == ${array[1]} && ${array[2]} == ${array[0]} ]]; then
     echo "Game is over!"
     echo " "
-    echo "${array[0]} is the winner!"
     if [[ ${array[0]} = X ]]; then
-      p1_score=$((p1_score + 1))
-      clear
-      scoreboard
-      draw_board
-    else
-      p2_score=$((p2_score + 1))
-      clear
-      scoreboard
-      draw_board
+      echo "X is the winner!"
+    elif [[ ${array[0]} = O ]]; then
+      echo "O is the winner!"
     fi
     rematch
   fi
@@ -127,17 +121,10 @@ win_condition() {
   if [[ ${array[3]} != - && ${array[3]} == ${array[4]} && ${array[3]} == ${array[5]} ]]; then
     echo "Game is over!"
     echo " "
-    echo "${array[3]} is the winner!"
     if [[ ${array[3]} = X ]]; then
-      p1_score=$((p1_score + 1))
-      clear
-      scoreboard
-      draw_board
-    else
-      p2_score=$((p2_score + 1))
-      clear
-      scoreboard
-      draw_board
+      echo "X is the winner!"
+    elif [[ ${array[3]} = O ]]; then
+      echo "O is the winner!"
     fi
     rematch
   fi
@@ -145,17 +132,10 @@ win_condition() {
   if [[ ${array[6]} != - && ${array[6]} == ${array[7]} && ${array[6]} == ${array[8]} ]]; then
     echo "Game is over!"
     echo " "
-    echo "${array[6]} is the winner!"
     if [[ ${array[6]} = X ]]; then
-      p1_score=$((p1_score + 1))
-      clear
-      scoreboard
-      draw_board
-    else
-      p2_score=$((p2_score + 1))
-      clear
-      scoreboard
-      draw_board
+      echo "X is the winner!"
+    elif [[ ${array[6]} = O ]]; then
+      echo "O is the winner!"
     fi
     rematch
   fi
@@ -163,17 +143,10 @@ win_condition() {
     if [[ ${array[4]} != - && ${array[4]} == ${array[6]} && ${array[4]} == ${array[2]} ]]; then
     echo "Game is over!"
     echo " "
-    echo "${array[4]} is the winner!"
     if [[ ${array[4]} = X ]]; then
-      p1_score=$((p1_score + 1))
-      clear
-      scoreboard
-      draw_board
-    else
-      p2_score=$((p2_score + 1))
-      clear
-      scoreboard
-      draw_board
+      echo "X is the winner!"
+    elif [[ ${array[4]} = O ]]; then
+      echo "O is the winner!"
     fi
     rematch
   fi
@@ -181,17 +154,10 @@ win_condition() {
   if [[ ${array[0]} != - && ${array[0]} == ${array[3]} && ${array[0]} == ${array[6]} ]]; then
     echo "Game is over!"
     echo " "
-    echo "${array[0]} is the winner!"
     if [[ ${array[0]} = X ]]; then
-      p1_score=$((p1_score + 1))
-      clear
-      scoreboard
-      draw_board
-    else
-      p2_score=$((p2_score + 1))
-      clear
-      scoreboard
-      draw_board
+      echo "X is the winner!"
+    elif [[ ${array[0]} = O ]]; then
+      echo "O is the winner!"
     fi
     rematch
   fi
@@ -199,17 +165,10 @@ win_condition() {
   if [[ ${array[1]} != - && ${array[1]} == ${array[4]} && ${array[1]} == ${array[7]} ]]; then
     echo "Game is over!"
     echo " "
-    echo "${array[1]} is the winner!"
     if [[ ${array[1]} = X ]]; then
-      p1_score=$((p1_score + 1))
-      clear
-      scoreboard
-      draw_board
-    else
-      p2_score=$((p2_score + 1))
-      clear
-      scoreboard
-      draw_board
+      echo "X is the winner!"
+    elif [[ ${array[1]} = O ]]; then
+      echo "O is the winner!"
     fi
     rematch
   fi
@@ -217,17 +176,10 @@ win_condition() {
   if [[ ${array[2]} != - && ${array[2]} == ${array[5]} && ${array[2]} == ${array[8]} ]]; then
     echo "Game is over!"
     echo " "
-    echo "${array[2]} is the winner!"
     if [[ ${array[2]} = X ]]; then
-      p1_score=$((p1_score + 1))
-      clear
-      scoreboard
-      draw_board
-    else
-      p2_score=$((p2_score + 1))
-      clear
-      scoreboard
-      draw_board
+      echo "X is the winner!"
+    elif [[ ${array[2]} = O ]]; then
+      echo "O is the winner!"
     fi
     rematch
   fi
@@ -235,17 +187,10 @@ win_condition() {
   if [[ ${array[0]} != - && ${array[0]} == ${array[4]} && ${array[0]} == ${array[8]} ]]; then
     echo "Game is over!"
     echo " "
-    echo "${array[0]} is the winner!"
     if [[ ${array[0]} = X ]]; then
-      p1_score=$((p1_score + 1))
-      clear
-      scoreboard
-      draw_board
-    else
-      p2_score=$((p2_score + 1))
-      clear
-      scoreboard
-      draw_board
+      echo "X is the winner!"
+    elif [[ ${array[0]} = O ]]; then
+      echo "O is the winner!"
     fi
     rematch
   fi
@@ -253,17 +198,10 @@ win_condition() {
   if [[ ${array[2]} != - && ${array[2]} == ${array[4]} && ${array[2]} == ${array[6]} ]]; then
     echo "Game is over!"
     echo " "
-    echo "${array[2]} is the winner!"
     if [[ ${array[2]} = X ]]; then
-      p1_score=$((p1_score + 1))
-      clear
-      scoreboard
-      draw_board
-    else
-      p2_score=$((p2_score + 1))
-      clear
-      scoreboard
-      draw_board
+      echo "X is the winner!"
+    elif [[ ${array[2]} = O ]]; then
+      echo "O is the winner!"
     fi
     rematch
   fi
@@ -278,14 +216,12 @@ turns() {
       if [ ${array[$i]} == - ]; then
         array[$i]='X'
         clear
-        scoreboard
         draw_board
         break
       fi
       echo "Enter a valid position!"
     done
     clear
-    scoreboard
     draw_board
     win_condition
     game_tie
@@ -296,14 +232,12 @@ turns() {
       if [ ${array[$i]} == - ]; then
         array[$i]='O'
         clear
-        scoreboard
         draw_board
         break
       fi
       echo "Enter a valid position!"
     done
     clear 
-    scoreboard
     draw_board
     win_condition
     game_tie
@@ -312,7 +246,6 @@ turns() {
 
 game() { 
   players
-  scoreboard
   draw_board
   turns
  }
@@ -320,7 +253,6 @@ game() {
 game_rematch() {
   game_rematch_order
   clear_board
-  scoreboard
   draw_board
   turns
  }
